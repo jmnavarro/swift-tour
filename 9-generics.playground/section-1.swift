@@ -4,7 +4,7 @@ import UIKit
 
 // generics functions
 
-func swap<T>(inout x: T, inout y: T) {
+func intercambia<T>(inout x: T, inout y: T) {
 	let aux = x
 	x = y
 	y = aux
@@ -12,7 +12,7 @@ func swap<T>(inout x: T, inout y: T) {
 
 var a = 1
 var b = 2
-swap(&a, &b)
+intercambia(&a, &b)
 
 var c = "abc"
 // error: 'String' is not identical to 'Int'

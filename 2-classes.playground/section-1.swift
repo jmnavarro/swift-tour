@@ -1,45 +1,48 @@
 import UIKit
 
+// Plain old class
+// ====================
+
 class MyParentClass {
 
-	public let value:String
+	let value: String
 
-	public init(value:String) {
+	init(value: String) {
 		self.value = value
 	}
 
-	public class func x() -> Int {
+	class func x() -> Int {
 		return 666
 	}
 
-	public class func replace(
-		string value0 = "",
-		from   value1:String,
-		to     value2:String) {
+	class func replace(
+		string value0: String,
+		from   value1: String,
+		to     value2: String) {
 
 		//...
 	}
 
-	public func y() -> (String,Int) {
+	func y() -> (String, Int) {
 		var tuple = (name:"abc", age:19)
 		return tuple
 	}
 
 }
 
-public class MyChildClass: MyParentClass {
+class MyChildClass: MyParentClass {
 
 	init(value1:String, value2:Int) {
 		super.init(value:value1)
 	}
 
-	override public func y() -> (String,Int) {
+	override func y() -> (String,Int) {
 		let tuple = super.y()
 
 		return ("Value -> \( tuple.0 )", tuple.1)
 	}
 
-	public func yy() -> String {
+	func yy() -> String {
 		return "yy"
 	}
 }
@@ -56,25 +59,20 @@ MyParentClass.replace(
 	from:"b",
 	to:"B")
 
-MyParentClass.replace(string:"abc", from:"b")
+let child = MyChildClass(value1:"abc", value2:2)
 
-let c = MyChildClass(value1:"abc", value2:2)
+child.y()
 
-c.y()
+let cc: MyParentClass = MyChildClass(value1:"abc", value2:2)
 
-// error: 'is' test is always true
-//if c is MyChildClass {
-//}
-
-// error: 'MyParentClass' is not a subtype of 'MyChildClass'
-//if c is MyParentClass {
-//}
-
-let cc:MyParentClass = MyChildClass(value1:"abc", value2:2)
-
+// Casting
+// ================
 if cc is MyChildClass {
-	let casted = cc as? MyChildClass
-	casted.yy()
+	let castedOptional: MyChildClass? = cc as? MyChildClass
+	castedOptional?.yy()
+
+	let castedForce: MyChildClass = cc as! MyChildClass
+	castedForce.yy()
 }
 
 // better...

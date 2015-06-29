@@ -1,18 +1,22 @@
 import UIKit
 
 
-var a:Int = 1
+var a: Int = 1
 
 // a can't be nil
-// a = nil
+//a = nil
 
-var b:Int? = 2
+var b: Int? = 2
 
 b = nil
 
-
 if b != nil {
 	a = b!
+}
+
+
+func x(a: String?) {
+
 }
 
 if let valueOfB = b {
@@ -25,7 +29,7 @@ else {
 
 /* This typical idiom in Java...
 
-	int a = foo()
+	Integer a = foo()
 	if (a != null) {
 		// make something safely with a
 	}
@@ -40,9 +44,10 @@ becomes...
 
 b = 3
 
-a = b! // <- This is a potentical NPE
+a = b! // <- This is a potential NPE
 
-let d = b ?? 99 // <- Equivalente to d = (b != null) ? b : 99
+let d = (b ?? 99) //
+// d = (b != null) ? b! : 99
 
 //============================
 // Optional chaining
@@ -52,5 +57,5 @@ func x() -> Int? {
 }
 
 // if x() returns nil, don't evaluate forward and returns directly nil
-x()?.advancedBy(3)
+let zzz = x()?.advancedBy(3)
 

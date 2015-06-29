@@ -30,7 +30,6 @@ enum Weather {
 	case Cloudy
 
 	static func create(rainfall rain:Int, temperature degrees:Float) -> Weather {
-
 		if rain > 1000 {
 			return Rainy(rainfall: rain)
 		}

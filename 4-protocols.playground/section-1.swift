@@ -2,36 +2,36 @@
 
 import UIKit
 
-@objc protocol Encryptable {
+protocol Encryptable {
 	func encrypt() -> String
-	func decrypt(value:String) -> Bool
+	func decrypt(value: String) -> Bool
 
-	var encryptionKey:String { get set }
+	var encryptionKey: String { get set }
 }
 
 class Car {
-	var brand:String
-	var model:String
+	var brand: String
+	var model: String
 
-	init(brand:String, model:String) {
+	init(brand: String, model: String) {
 		self.brand = brand
 		self.model = model
 	}
 }
 
-class SecuredCar: Car, Encryptable {
+class SecretCar: Car, Encryptable {
 
-	var encryptionKey:String = ""
+	var encryptionKey: String = ""
 
 	func encrypt() -> String {
-		return "@#@#¢¢∞¬÷8·$·!$%·$"
+		return "xxxx"
 	}
 
 	func decrypt(value:String) -> Bool {
-		let center = advance(value.startIndex, countElements(value)/2)
+		let center = advance(value.startIndex, count(value)/2)
 
-		self.brand = value.substringToIndex(center)
-		self.model = value.substringFromIndex(center.successor())
+		self.brand = "abc"
+		self.model = "xyz"
 
 		return true
 	}

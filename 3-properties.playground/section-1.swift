@@ -7,15 +7,11 @@ class MyClass {
 
 	var storedProperty:Int = 3
 
-	lazy var lazyStoredProperty = MyClass.heavyComputation()
-
-	var readOnlyProperty:String {
-		get {
-			return ""
-		}
+	var readOnlyProperty: String {
+		return ""
 	}
 
-	var computedProperty:String {
+	var computedProperty: String {
 		get {
 			return ""
 		}
@@ -24,7 +20,7 @@ class MyClass {
 		}
 	}
 
-	var observedPropery:Int = 2 {
+	var observedPropery: Int = 2 {
 		willSet(newValue) {
 			println("before change to \(newValue)")
 		}
@@ -33,6 +29,7 @@ class MyClass {
 		}
 	}
 
+	lazy var lazyStoredProperty = MyClass.heavyComputation()
 
 	subscript(index:String) -> String {
 		return index + "!"

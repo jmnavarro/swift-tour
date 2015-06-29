@@ -8,31 +8,30 @@ enum Weather {
 	case Sunny(temperature:Float)
 	case Cloudy
 
-}
+	func season() -> String {
+		switch self {
+			case .Sunny(let temperature) where temperature > 20:
+				return "summer!"
 
-var w = Weather.Rainy(rainfall: 1500)
-queEstacionEs(w)
+			case .Sunny(let temperature) where temperature > 10:
+				return "spring or fall"
 
-w = Weather.Sunny(temperature:25)
-queEstacionEs(w)
+			case .Rainy(_),
+				.Cloudy,
+				.Sunny(_):
+				return "the winter is coming!"
 
-w = Weather.Sunny(temperature:5)
-queEstacionEs(w)
-
-func queEstacionEs(w:Weather) -> String {
-	switch w {
-		case .Sunny(let temperature) where temperature > 20:
-			return "summer!"
-
-		case .Sunny(let temperature) where temperature > 10:
-			return "spring or fall"
-
-		case .Rainy(_),
-			.Cloudy,
-			.Sunny(_):
-			return "the winter is coming!"
-
-		default:
-			return ""
+			default:
+				return ""
+		}
 	}
+
 }
+
+var w = Weather.Rainy(rainfall: 1500).season()
+
+w = Weather.Sunny(temperature:25).season()
+
+w = Weather.Sunny(temperature:5).season()
+
+
